@@ -36,14 +36,7 @@ except URLError as e:
   streamlit.error()
 
 #streamlit.stop()
-
-
-
-
-
 # my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION(), CURRENT_WAREHOUSE()")
-
-
 
 streamlit.header("The fruit_load_list contains:")
 #snowflake-related functions
@@ -56,7 +49,6 @@ def get_fruit_load_list():
 if streamlit.button('Get Fruit Load List'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_data_rows = get_fruit_load_list()
-  my_cnx.close()
   streamlit.dataframe(my_data_rows)
 
 def insert_row_snowflake(new_fruit):
@@ -67,3 +59,4 @@ def insert_row_snowflake(new_fruit):
 fruit_add = streamlit.text_input('What fruit would you like to add?')
 insert_row_snowflake(fruit_add)
 
+my_cnx.close()
