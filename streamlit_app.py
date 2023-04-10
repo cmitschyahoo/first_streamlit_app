@@ -64,5 +64,5 @@ if fruit_add:
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   insert_row_snowflake(fruit_add)
 
-my_cnx.close()
+'my_cnx.close()
 
